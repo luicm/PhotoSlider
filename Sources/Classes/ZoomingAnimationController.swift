@@ -18,6 +18,7 @@ public class ZoomingAnimationController: NSObject, UIViewControllerAnimatedTrans
     var present = true
     public var sourceTransition: ZoomingAnimationControllerTransitioning?
     public var destinationTransition: ZoomingAnimationControllerTransitioning?
+    public var backgroundColor: UIColor?
 
     public init(present: Bool) {
         super.init()
@@ -50,7 +51,7 @@ public class ZoomingAnimationController: NSObject, UIViewControllerAnimatedTrans
         containerView.addSubview(toViewController.view)
         
         let backgroundView = UIView(frame: fromViewController.view.frame)
-        backgroundView.backgroundColor = UIColor.black
+        backgroundView.backgroundColor = backgroundColor ?? UIColor.black
         backgroundView.alpha = 0.0
         containerView.addSubview(backgroundView)
         
