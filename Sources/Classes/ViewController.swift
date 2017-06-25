@@ -51,6 +51,7 @@ public class ViewController:UIViewController {
     public var captionTextColor = UIColor.white
 
     public var imageLoader: PhotoSlider.ImageLoader?
+    public var closeButtonImage: UIImage?
 
     public init(imageURLs:Array<URL>) {
         super.init(nibName: nil, bundle: nil)
@@ -153,8 +154,12 @@ public class ViewController:UIViewController {
         // Close Button
         if visibleCloseButton {
             closeButton = UIButton(frame: CGRect.zero)
-            let imagePath = resourceBundle().path(forResource: "PhotoSliderClose", ofType: "png")
-            closeButton!.setImage(UIImage(contentsOfFile: imagePath!), for: .normal)
+            if let closeButtonImage = closeButtonImage {
+                closeButton!.setImage(closeButtonImage, for: .normal)
+            } else {
+                let imagePath = resourceBundle().path(forResource: "PhotoSliderClose", ofType: "png")
+                closeButton!.setImage(UIImage(contentsOfFile: imagePath!), for: .normal)
+            }
             closeButton!.addTarget(self, action: #selector(closeButtonDidTap(_:)), for: .touchUpInside)
             closeButton!.imageView?.contentMode = UIViewContentMode.center
             view.addSubview(closeButton!)
