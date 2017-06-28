@@ -208,7 +208,7 @@ public class ViewController:UIViewController {
         closeButton!.translatesAutoresizingMaskIntoConstraints = false
         
         let views: [String: UIView] = ["closeButton": closeButton!]
-        let constraintVertical   = NSLayoutConstraint.constraints(withVisualFormat: "V:|[closeButton(52)]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views)
+        let constraintVertical   = NSLayoutConstraint.constraints(withVisualFormat: "V:|[closeButton(100)]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views)
         let constraintHorizontal = NSLayoutConstraint.constraints(withVisualFormat: "H:[closeButton(52)]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views)
         view.addConstraints(constraintVertical)
         view.addConstraints(constraintHorizontal)
@@ -290,6 +290,7 @@ extension ViewController: UIScrollViewDelegate {
             let alpha = 1.0 - ( fabs(offsetHeight) / (scrollView.frame.size.height / 2.0) )
 
             backgroundView.alpha = alpha
+            scrollView.alpha = alpha
             
             var contentOffset = scrollView.contentOffset
             contentOffset.x = scrollPreviewPoint.x
@@ -367,6 +368,11 @@ extension ViewController: UIScrollViewDelegate {
             movedHeight = screenHeight
         }
         
+        if transitioningDelegate == nil {
+            self.dissmissViewControllerAnimated(animated: true)
+            return
+        }
+        
         UIView.animate(
             withDuration: 0.4,
             delay: 0,
@@ -374,7 +380,7 @@ extension ViewController: UIScrollViewDelegate {
             animations: { () -> Void in
                 self.scrollView.frame = CGRect(x: 0, y: movedHeight, width: screenWidth, height: screenHeight)
                 self.backgroundView.alpha = 0.0
-//                self.closeButton?.alpha = 0.0
+                self.closeButton?.alpha = 0.0
                 self.captionLabel.alpha = 0.0
                 self.view.alpha = 0.0
             },
