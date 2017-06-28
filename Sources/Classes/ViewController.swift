@@ -374,7 +374,7 @@ extension ViewController: UIScrollViewDelegate {
             animations: { () -> Void in
                 self.scrollView.frame = CGRect(x: 0, y: movedHeight, width: screenWidth, height: screenHeight)
                 self.backgroundView.alpha = 0.0
-                self.closeButton?.alpha = 0.0
+//                self.closeButton?.alpha = 0.0
                 self.captionLabel.alpha = 0.0
                 self.view.alpha = 0.0
             },
@@ -412,7 +412,7 @@ extension ViewController: PhotoSliderImageViewDelegate {
             scrollView.isScrollEnabled = true
             
             UIView.animate(withDuration: 0.05, delay: 0.0, options: UIViewAnimationOptions.curveLinear, animations: { () -> Void in
-                self.closeButton?.alpha = 1.0
+//                self.closeButton?.alpha = 1.0
                 self.captionLabel.alpha = 1.0
                 if self.visiblePageControl {
                     self.pageControl.alpha = 1.0
@@ -423,7 +423,7 @@ extension ViewController: PhotoSliderImageViewDelegate {
             scrollView.isScrollEnabled = false
 
             UIView.animate(withDuration: 0.05, delay: 0.0, options: UIViewAnimationOptions.curveLinear, animations: { () -> Void in
-                self.closeButton?.alpha = 0.0
+//                self.closeButton?.alpha = 0.0
                 self.captionLabel.alpha = 0.0
                 if self.visiblePageControl {
                     self.pageControl.alpha = 0.0

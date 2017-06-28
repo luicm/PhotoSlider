@@ -98,7 +98,7 @@ public class ZoomingAnimationController: NSObject, UIViewControllerAnimatedTrans
 
         UIView.animate(
             withDuration: self.transitionDuration(using: transitionContext),
-            delay: 0.0,
+            delay: 0.1,
             options: UIViewAnimationOptions.curveLinear,
             animations: { () -> Void in
                 
