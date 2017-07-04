@@ -289,8 +289,9 @@ extension ViewController: UIScrollViewDelegate {
             let offsetHeight = fabs(scrollView.frame.size.height - scrollView.contentOffset.y)
             let alpha = 1.0 - ( fabs(offsetHeight) / (scrollView.frame.size.height / 2.0) )
 
-            backgroundView.alpha = alpha
-            scrollView.alpha = alpha
+            imageView.alpha = alpha
+            pageControl.alpha = alpha
+            closeButton?.alpha = alpha
             
             var contentOffset = scrollView.contentOffset
             contentOffset.x = scrollPreviewPoint.x
